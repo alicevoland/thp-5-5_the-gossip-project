@@ -1,7 +1,5 @@
 # THP Week 5 Day 4 - The Gossip Project
 
-## Thank you for the feedback if you clone :)
-
 ## Default README
 
 This README would normally document whatever steps are necessary to get the
