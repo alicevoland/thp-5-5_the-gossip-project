@@ -14,7 +14,7 @@
     </p>
   </div>
   <%= link_to user_path(gossip.author.id), :action => 'go' do %>
-  <div class="card-body text-primary"> Auteur : <%= gossip.author.first_name %> <%= gossip.author.last_name %> </div>
+  <div class="card-body text-primary"> Auteur : <%= gossip.author.first_name %> <%= gossip.author.last_name %>  il y a <%= TimeDifference.between(Time.now, gossip.updated_at).humanize %> </div>
   <% end %>
   <%= link_to city_path(gossip.author.city.id), :action => 'go' do %>
   <div class="card-body text-info"> Vile : <%= gossip.author.city.name %> </div>

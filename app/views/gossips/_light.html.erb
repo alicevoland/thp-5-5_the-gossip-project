@@ -4,8 +4,7 @@
   <% end %>
   <div class="d-flex w-100 justify-content-between">
     <small> <%= gossip.author.first_name %> <%= gossip.author.last_name %> (<%= gossip.comments.size %>
-      commentaires)</small>
-      <small> <%= TimeDifference.between(Time.now, gossip.updated_at).humanize %> </small>
+      commentaires) <%= TimeDifference.between(Time.now, gossip.updated_at).humanize %> </small>
       <small> <%= render partial: 'likes/like', locals: {gossip: gossip} %> </small>
     </div>
   </div>
