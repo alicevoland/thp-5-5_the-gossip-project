@@ -1,0 +1,42 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1"> <%= gossip.title %> </h5>
+      <%= render partial: 'likes/like', locals: {gossip: gossip} %>
+    </div>
+    </div>
+  <div class="card-body">
+    <p class="card-text">
+      <% gossip.content.split("\n").each do |line| %>
+      <%= line %> <br />
+      <% end %>
+
+    </p>
+  </div>
+  <%= link_to user_path(gossip.author.id), :action => 'go' do %>
+  <div class="card-body text-primary"> Auteur : <%= gossip.author.first_name %> <%= gossip.author.last_name %> </div>
+  <% end %>
+  <%= link_to city_path(gossip.author.city.id), :action => 'go' do %>
+  <div class="card-body text-info"> Vile : <%= gossip.author.city.name %> </div>
+  <% end %>
+</div>
+<% if current_user == gossip.author %>
+<%= link_to edit_gossip_path(gossip) do %>
+<button type="button" class="btn btn-secondary"> Editer le potin </button>
+<% end %>
+
+<%= link_to gossip_path(gossip), data: { confirm: "Confirmer la suppression du potin :\n#{gossip.title}", method: :delete} do %>
+<button type="button" class="btn btn-warning"> Supprimer le potin </button>
+<% end %>
+<% end %>
+
+<div class="card border-secondary mb-3 mt-4">
+  <div class="card-body">
+    <h5 class="card-text"> Commentaires </h5>
+    <%= render partial: "comments/list", locals: {comments: gossip.comments.sort_by(&:created_at)} %>
+  </div>
+</div>
+
+<%= link_to new_gossip_comment_path(gossip), :action => 'go' do %>
+<button type="button" class="btn btn-primary"> Ajouter un commentaire ! </button>
+<% end %>

@@ -1,0 +1,15 @@
+<%= render partial: "shared/header" %>
+
+<div class="container">
+
+  <%= render partial: "cities/city", locals: {city: @city} %>
+
+  <h2 class="mb-4 mt-4"> Utilisateurs (<%= @city.users.size %>) : </h2>
+
+  <%= render partial: "users/list", locals: {users: @city.users} %>
+
+  <h2 class="mb-4 mt-4"> Potins (<%= @city.gossips.size %>) : </h2>
+
+  <%= render partial: "gossips/list", locals: {gossips: @city.gossips} %>
+
+</div>

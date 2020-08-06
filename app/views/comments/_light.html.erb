@@ -1,0 +1,7 @@
+<li> 
+  <%= link_to comment.author.full_name, user_path(comment.author) %> : 
+  <%= comment.content %> 
+  <% if current_user == comment.author %>
+  (<%= link_to "éditer", edit_gossip_comment_path(comment.get_gossip, comment) %>)
+  <% end %>
+</li>

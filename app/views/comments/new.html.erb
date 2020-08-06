@@ -1,0 +1,9 @@
+<%= render partial: "shared/header" %>
+
+<div class="container">
+
+  <%= render partial: "gossips/gossip", locals: {gossip: @gossip} %>
+
+  <%= render partial: "comments/form", locals: {gossip: @gossip} %>
+
+</div>

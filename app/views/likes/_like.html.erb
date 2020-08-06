@@ -1,0 +1,15 @@
+<span>
+  <%= gossip.likes.size %> likes
+
+  <% if logged_in? %>
+  <% if gossip.liked_by?(current_user) %>
+
+  <%= link_to "UNLIKE", gossip_like_path(gossip.id, gossip.like_by(current_user)), method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+
+  <% else %>
+
+  <%= link_to "LIKE", gossip_likes_path(gossip.id), method: :post, class: "btn btn-outline-success btn-sm" %>
+
+  <% end %>
+  <% end %>
+</span>

@@ -1,0 +1,11 @@
+<div class="list-group-item list-group-item-action">
+  <%= link_to gossip_path(gossip.id), :action => 'go' do %>
+  <h5 class="d-flex w-100 pb-1"> <%= gossip.title %> </h5>
+  <% end %>
+  <div class="d-flex w-100 justify-content-between">
+    <small> <%= gossip.author.first_name %> <%= gossip.author.last_name %> (<%= gossip.comments.size %>
+      commentaires)</small>
+      <small> <%= TimeDifference.between(Time.now, gossip.updated_at).humanize %> </small>
+      <small> <%= render partial: 'likes/like', locals: {gossip: gossip} %> </small>
+    </div>
+  </div>

@@ -1,0 +1,14 @@
+<%= render partial: "shared/header" %>
+
+<div class="container">
+
+  <%= render partial: "gossips/gossip", locals: {gossip: @gossip} %>
+
+  <%= render partial: "comments/form", locals: {gossip: @gossip} %>
+
+  <%= link_to gossip_comment_path(@gossip, @comment), data: { confirm: "Confirmer la suppression du commentaire :\n#{@comment.content}", method: :delete} do %>
+  <button type="button" class="btn btn-warning"> Supprimer le commentaire </button>
+  <% end %>
+
+
+</div>

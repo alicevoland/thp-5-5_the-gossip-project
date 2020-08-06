@@ -1,0 +1,12 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary">
+    <h4> <%= user.first_name %> <%= user.last_name %> </h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"> <%= user.description %> <br>
+      <small class="text-muted"> <%= user.email %> (<%= user.age %> ans)</small></p>
+  </div>
+  <%= link_to city_path(user.city.id), :action => 'go' do %>
+  <div class="card-footer text-primary"> Vile : <%= user.city.name %> </div>
+  <% end %>
+</div>

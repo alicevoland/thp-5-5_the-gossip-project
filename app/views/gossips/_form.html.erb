@@ -1,0 +1,28 @@
+<%= form_with model: @gossip, local: true do |form| %>
+
+<% if @gossip.errors.any? %>
+<div class="alert alert-warning" role="alert">
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<table>
+  <tr>
+    <td> <%= form.label 'Titre' %> </td>
+    <td> <%= form.text_field :title, size: 80 %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Contenu' %> </td>
+    <td> <%= form.text_area :content,  rows: 5, cols: 80 %> </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> <%= form.submit "Valider", class: "btn btn-primary" %> </td>
+  </tr>
+</table>
+
+<% end %>

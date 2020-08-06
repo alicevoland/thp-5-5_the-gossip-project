@@ -1,0 +1,11 @@
+<%= render partial: "shared/header" %>
+
+<div class="container">
+
+  <%= render partial: "users/user", locals: {user: @user} %>
+
+  <h2 class="mb-4 mt-4"> Potins (<%= @user.gossips.size %>) : </h2>
+
+  <%= render partial: "gossips/list", locals: {gossips: @user.gossips} %>
+
+</div>

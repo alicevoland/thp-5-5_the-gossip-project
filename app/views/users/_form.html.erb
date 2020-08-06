@@ -1,0 +1,52 @@
+<%= form_with model: @user, local: true do |form| %>
+
+<% if @user.errors.any? %>
+<div class="alert alert-warning" role="alert">
+  <p>Nous n'avons pas réussi à créer l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<table>
+  <tr>
+    <td> <%= form.label 'Prénom' %> </td>
+    <td> <%= form.text_field :first_name, size: 80 %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Nom' %> </td>
+    <td> <%= form.text_field :last_name, size: 80 %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Email' %> </td>
+    <td> <%= form.email_field :email, size: 80 %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Description' %> </td>
+    <td> <%= form.text_area :description,  rows: 5, cols: 80 %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Age' %> </td>
+    <td> <%= form.number_field :age, {value: '99', min: 13, max: 99 } %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Ville' %> </td>
+    <td> <%= form.select(:city_id, City.all.map {|c| [c.name, c.id]}) %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Mot de passe' %> </td>
+    <td> <%= form.password_field :password %> </td>
+  </tr>
+  <tr>
+    <td> <%= form.label 'Confirmation' %> </td>
+    <td> <%= form.password_field :password_confirmation %> </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> <%= form.submit "Valider", class: "btn btn-primary" %> </td>
+  </tr>
+</table>
+
+<% end %>

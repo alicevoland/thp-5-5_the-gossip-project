@@ -1,0 +1,8 @@
+<% if comments.size > 0 %>
+<ul>
+  <% comments.each do |comment| %>
+  <%= render partial: "comments/light", locals: {comment: comment} %>
+  <%= render partial: "comments/list", locals: {comments: comment.comments} %>
+  <% end %>
+</ul>
+<% end %>

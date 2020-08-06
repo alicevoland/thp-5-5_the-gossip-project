@@ -1,0 +1,16 @@
+<%= render partial: "shared/header" %>
+
+<div class="container">
+
+  <h1 class="mb-4"> Bienvenue sur The Gossip Project ! </h1>
+
+  <%= link_to new_gossip_path, :action => 'go' do %>
+  <button type="button" class="btn btn-primary"> Créer un potin ! </button>
+  <% end %>
+
+
+  <h2 class="mb-4 mt-4"> Voici la liste de tous les potins (<%= @gossips.size %>)</h2>
+
+  <%= render partial: "gossips/list", locals: {gossips: @gossips.sort_by(&:created_at).reverse} %>
+
+</div>
