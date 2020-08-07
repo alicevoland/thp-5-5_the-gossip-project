@@ -6,6 +6,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.reload_classes_only_on_change = false
+  #see https://stackoverflow.com/questions/50609152/rails-doesnt-detect-file-changes-and-config-reload-classes-only-on-change-makes
 
   # Do not eager load code on boot.
   config.eager_load = false

@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-  validates :password, presence: true, length: { minimum: 6 }
+  #validates :password, presence: true, length: { minimum: 6 }
 
   validates :email,
             presence: true,
@@ -19,5 +19,10 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
   end
 end

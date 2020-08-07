@@ -4,12 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # cherche s'il existe un utilisateur en base avec l’e-mail
     user = User.find_by(email: params[:email])
 
-    # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe
     if user&.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user)
       redirect_to gossips_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
@@ -18,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    log_out(current_user)
     redirect_to gossips_path
   end
 end
