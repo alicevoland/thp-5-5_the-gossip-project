@@ -16,15 +16,17 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      redirect_to @user
+      remember(@user) if params.require(:user).permit(:remember_me)
+
+      redirect_to gossips_path
     else
       render :new
     end
   end
-  private 
+
+  private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :age, :city_id, :password, :password_confirmation, :description)
   end
-
 end
